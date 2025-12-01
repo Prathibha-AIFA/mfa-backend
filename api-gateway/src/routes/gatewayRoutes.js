@@ -16,6 +16,13 @@ async function proxy(req, res) {
     const base = req.path.split("/")[1]; // "auth" | "mfa" | "items"
     const serviceUrl = services[base];
 
+    if (!serviceUrl) {
+      console.error(`Service URL not configured for: ${base}`);
+      return res.status(503).json({
+        message: `Service '${base}' URL not configured. Check environment variables.`,
+      });
+    }
+
     const url = `${serviceUrl}${req.path}`;
 
     const response = await axios({
