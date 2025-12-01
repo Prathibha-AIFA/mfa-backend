@@ -7,5 +7,5 @@ import { connectDB } from "./config/db.js";
 const PORT = process.env.PORT || 4001;
 
 connectDB().then(() => {
-  app.listen(PORT, () => console.log(`auth-service running at http://localhost:${PORT}`));
+  app.listen(PORT,"0.0.0.0",  () => console.log(`auth-service running at http://localhost:${PORT}`));
 });

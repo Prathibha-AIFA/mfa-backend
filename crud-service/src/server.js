@@ -7,7 +7,7 @@ import { connectDB } from "./config/db.js";
 const PORT = process.env.PORT || 4003;
 
 connectDB().then(() => {
-  app.listen(PORT, () => {
+  app.listen(PORT,"0.0.0.0",  () => {
     console.log(`crud-service running on http://localhost:${PORT}`);
   });
 });
